@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;1,100;1,200&family=Roboto:wght@100&family=Ropa+Sans:ital@0;1&family=Source+Sans+Pro:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/signup.styles.css">
+    <title>Pollin App - Registro</title>
+</head>
+<body>
+    <%- include('partials/header'); %>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-sm-12 col-md-10 col-lg-7 contentSignUp">
+                    <div class="row">
+                        <div class="col col-1"><img src="../public/images/itsa.png" alt="itsa"></div>
+                    </div>
+                    <div class="row">
+                        <form action="">
+                            <div class="col col-12 text-start signUp mb-2">Crear Cuenta</div>
+                            <div class="row">
+                                <div class="col-4 mb-2">
+                                    <input type="text" class="form-control" placeholder="Nombres">
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <input type="text" class="form-control" placeholder="Apellido Paterno">
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <input type="text" class="form-control" placeholder="Apellido Materno">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <input type="password" class="form-control" placeholder="Correo Institucional">
+                                <div id="emailHelp" class="form-text">Debes contar con tu correo institucional</div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col col-6"><input type="password" class="form-control" placeholder="Contraseña"></div>
+                                <div class="col col-6"><input type="password" class="form-control" placeholder="Confirmar"></div>
+                            </div>
+                            <div class="col col-12 d-flex justify-content-end"><button class="buttonSignUp">Entrar</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -15,7 +15,7 @@
     font-weight:bold;
 }
 
-.buttonLogIn{    
+.buttonLognIn{    
     background: rgb(58,59,180);
     background: linear-gradient(305deg, rgba(58,59,180,1) 0%, rgba(32,29,253,1) 50%, rgba(69,116,252,1) 100%);
     border-radius: 11px;

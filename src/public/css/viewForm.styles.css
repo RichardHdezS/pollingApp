@@ -101,3 +101,16 @@ body{
     width:auto;
     height: 1.5em;
 }
+
+.formTitle{
+    font-size:32px;
+    font-weight:bold
+}
+
+.formDescription{
+    font-size:18px;
+}
+
+.seccionDescription{
+    font-size:18px;
+}

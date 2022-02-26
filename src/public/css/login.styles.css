@@ -25,3 +25,11 @@
     font:          normal bold 18px/1 "Open Sans", sans-serif;
     text-align:    center;
 }
+
+.register{
+    outline: none;
+    text-decoration: none;
+    color: black;
+    font-weight:bold;
+    font-size:18px;
+}

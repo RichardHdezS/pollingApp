@@ -24,7 +24,7 @@ async function signUp(userData){//hacemos la peticion para validar el logueo de 
             result=err.response.data;
         });
         console.log(result)
-        if(result.token && result.access) document.location.href=`http://localhost:3000/home`
+        if(result.token && result.access) document.location.href=`http://localhost:3000/`
     }
     catch(err){
         console.log("Algo ha salido mal al iniciar sesion " + err);

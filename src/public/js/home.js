@@ -22,6 +22,11 @@ function seeDevInfo(){
     })
 }
 
+function newForm(){
+    location.href="http://localhost:3000/new-form";
+}
+
+
 function openForm(formName){//hacemos la peticion con axios
     location.href=`http://localhost:3000/view/${formName}`;
 }

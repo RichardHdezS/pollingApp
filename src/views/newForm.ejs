@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;1,100;1,200&family=Roboto:wght@100&family=Ropa+Sans:ital@0;1&family=Source+Sans+Pro:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
+    <!-- General styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <!-- Unique styles -->
+    <link rel="stylesheet" href="../public/css/newForm.styles.css">
+    <title>Pollin App - Nuevo Formulario</title>
+</head>
+<body>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">        
+                <div class="col col-12 text-center newFormTitle">Nuevo Formulario</div>
+                <div class="col col-sm-12 col-md-12 col-lg-12 contentNewForm">
+                    <div class="row d-flx justify-content-end" onclick="addFormSeccion()">
+                        <div class="col col-sm-5 col-md-4 col-lg-3 col-xl-2 addSeccion text-center">
+                            <img src="../public/images/icons/addOption.png" alt="">
+                            Nueva Sección
+                        </div>
+                    </div>
+                    <form id="newForm">
+                        <div class="row formHeader">
+                            <div class="col-8 mb-3 formTitle">
+                                <input type="text" name="formTitle" class="form-control form-control-lg formTitle" value="" placeholder="Titulo del formulario">
+                            </div>
+                            <div class="col-10 mb-3">
+                                <textarea name="formDescription" class="form-control formDescription" cols="20" rows="5" placeholder="Descripcion del formulario"></textarea>
+                            </div>
+                        </div>
+                        <div class="row formBody">
+                            <div class="col-12 seccion">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input type="text" name="seccionName" class="form-control seccionName" value="" placeholder="Nombre de la seccion">
+                                    </div>
+                                    <div class="col-11 mb-2">
+                                        <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5" placeholder="Descripcion de la seccion"></textarea>
+                                    </div>
+                                    <div class="row d-flx justify-content-start" onclick="addOption()">
+                                        <div class="col col-sm-5 col-md-4 col-lg-3 col-xl-2 text-center addOption">
+                                            <img src="../public/images/icons/addOption.png" alt="">
+                                            Nueva Opción
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-12 col-lg-10 col-xl-8">
+                                    <div class="row option">
+                                        <div class="col col-10 optionHeader">
+                                            <div class="row">
+                                                <div class="col-11">Opción</div>
+                                                <div class="col-1"><img src="../public/images/delete.png" alt="delete"></div>
+                                            </div>
+                                            <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="">
+                                        </div>
+                                        <div class="col col-6 optionBody">
+                                            <select name="typeOption" class="form-select">
+                                                <option value="" selected>Selecciona tipo de campo</option>
+                                                <option value="text">Texto</option>
+                                                <option value="email">Email</option>
+                                                <option value="number">Numerico</option>
+                                                <option value="range">Rango</option>
+                                                <option value="radioButton">Radio Buttons</option>
+                                                <option value="select">Items</option>
+                                                <option value="g-rango">General Rango</option>
+                                                <option value="g-radios">General Radio Buttons</option>
+                                                <option value="g-items">General Items</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-12 col-lg-10 col-xl-8">
+                                    <div class="row option">
+                                        <div class="col col-10 optionHeader">
+                                            Opción
+                                            <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="">
+                                        </div>
+                                        <div class="col col-6 optionBody">
+                                            <select name="typeOption" class="form-select">
+                                                <option value="" selected>Selecciona tipo de campo</option>
+                                                <option value="text">Texto</option>
+                                                <option value="email">Email</option>
+                                                <option value="number">Numerico</option>
+                                                <option value="range">Rango</option>
+                                                <option value="radioButton">Radio Buttons</option>
+                                                <option value="select">Items</option>
+                                                <option value="g-rango">General Rango</option>
+                                                <option value="g-radios">General Radio Buttons</option>
+                                                <option value="g-items">General Items</option>
+                                            </select>
+                                        </div>
+                                        <div class="col col-9">
+                                            <div id="emailHelp" class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
+                                            <textarea name="" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-12 col-lg-10 col-xl-8">
+                                    <div class="row option">
+                                        <div class="col col-10 optionHeader">
+                                            Opción
+                                            <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="">
+                                        </div>
+                                        <div class="col col-6 optionBody">
+                                            <select name="typeOption" class="form-select">
+                                                <option value="" selected>Selecciona tipo de campo</option>
+                                                <option value="text">Texto</option>
+                                                <option value="email">Email</option>
+                                                <option value="number">Numerico</option>
+                                                <option value="range">Rango</option>
+                                                <option value="radioButton">Radio Buttons</option>
+                                                <option value="select">Items</option>
+                                                <option value="g-rango">General Rango</option>
+                                                <option value="g-radios">General Radio Buttons</option>
+                                                <option value="g-items">General Items</option>
+                                            </select>
+                                        </div>
+                                        <div class="col col-9">
+                                            <div id="emailHelp" class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
+                                            <textarea name="" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"></textarea>
+                                            <div id="emailHelp" class="form-text">Esta opcion habilitara un campo de texto en el formulario que funcionara como respuesta alternativa a las anteriormente dadas)</div>                                      
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

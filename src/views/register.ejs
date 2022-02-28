@@ -23,29 +23,29 @@
                         <div class="col col-1"><img src="../public/images/itsa.png" alt="itsa"></div>
                     </div>
                     <div class="row">
-                        <form action="">
+                        <form id="registerUser">
                             <div class="col col-12 text-start signUp mb-2">Registrarse</div>
                             <div class="row">
                                 <div class="col-12 mb-2">
-                                    <input type="text" class="form-control" placeholder="Nombres">
+                                    <input type="text" name="nombre" id="inputName" class="form-control" placeholder="Nombres">
                                 </div>
                                 <div class="col-6 mb-2">
-                                    <input type="text" class="form-control" placeholder="Apellido Paterno">
+                                    <input type="text" name="apellidoP" id="inputApeliidoP" class="form-control" placeholder="Apellido Paterno">
                                 </div>
                                 <div class="col-6 mb-2">
-                                    <input type="text" class="form-control" placeholder="Apellido Materno">
+                                    <input type="text" name="apellidoM" id="inputApeliidoM" class="form-control" placeholder="Apellido Materno">
                                 </div>
                             </div>
                             <div class="col-12 mb-2">
-                                <input type="number" class="form-control" placeholder="Numero de Control">
+                                <input type="number" name="numCtrl" id="inpuNumCtrl" class="form-control" placeholder="Numero de Control">
                             </div>
                             <div class="col-12 mb-2">
-                                <input type="email" class="form-control" placeholder="Correo Institucional">
+                                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo Institucional">
                                 <div id="emailHelp" class="form-text">Debes contar con tu correo institucional</div>
                             </div>
                             <div class="row mb-5">
-                                <div class="col col-6"><input type="password" class="form-control" placeholder="Contraseña"></div>
-                                <div class="col col-6"><input type="password" class="form-control" placeholder="Confirmar"></div>
+                                <div class="col col-6"><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña"></div>
+                                <div class="col col-6"><input type="password" id="inputConfirmPassword" name="comfirmPassword" class="form-control" placeholder="Confirmar"></div>
                             </div>
                             <div class="col col-12 d-flex justify-content-end"><button class="buttonSignUp">Entrar</button></div>
                         </form>
@@ -56,5 +56,7 @@
     </body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../public/js/register.js"></script>
 </body>
 </html>

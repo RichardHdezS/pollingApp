@@ -1,24 +1,63 @@
+const Users = require('../models/user.model');
+const jwt = require('jsonwebtoken');
+const config = require('../config');
+
 async function signIn(req, res){
-    console.log(req.body)
-    res.render('home');
+    try{
+        const {email, password} = req.body;
+        const foundUser = await Users.findOne({email:email});
+        if(!foundUser)  return res.status(401).json({errors:[{msg:"El usuario es incorrecto"}]});
+        const matchPassword = await foundUser.comparePassword(password);
+        if(!matchPassword) return res.status(401).json({errors:[{msg:"La contraseña es incorrecta"}]});
+        const token = jwt.sign({id: foundUser._id}, config.serverConfig.secret, {expiresIn: 86400});//generamos el token para el usuario logueado
+        req.session.userToken = token;
+        res.status(200).json({token:token, access:true});
+    }catch(err){
+        console.log(err)
+        res.status(401).json({errors:[{msg:"Algo salio mal al iniciar sesion"}]});
+    }
 }
 
-async function signUp(){
-    console.log(req.body)
-    res.status(200).send('Todo okay en register');
+async function signUp(req, res){
+    try{
+        delete req.body.confirmPassword;
+        const newUser = new Users(req.body);
+        newUser.password = await newUser.encryptPassword(newUser.password);
+        const saveUSer = await newUser.save();
+        console.log(saveUSer);
+        const token = jwt.sign({id: saveUSer._id}, config.serverConfig.secret,{expiresIn: 86400});
+        req.session.userToken = token;
+        res.status(200).json({token:token, access:true});
+    }catch(err){
+        res.status(401).json({errors:[{msg:"Algo salio mal al registrarse"}]});
+    }
 }
 
-function lognIn(req, res){
-    res.status(200).render('login');
+function lognIn(req, res){//TODO eliminemos el token de la sesion al llegar a esta poagina
+    if(req.session){
+        req.session.destroy();
+        return res.status(200).render('login');
+    }
+        else return res.status(200).render('login');
 }
 
 function register(req, res){
-    res.status(200).render('register');
+    if(req.session){
+        req.session.destroy();
+        return res.status(200).render('register')
+    }
+        else return res.status(200).render('register')
+}
+
+function gotoHome(req, res){//TODO crear un middlerware que permita valida el token y asi verificar el acceso
+    if(req.session.userToken) return res.render('home')
+        else return res.redirect('/')
 }
 
 module.exports = {
     signIn,
     signUp,
     lognIn,
-    register
+    register,
+    gotoHome
 }

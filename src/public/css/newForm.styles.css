@@ -101,50 +101,6 @@ body{
     margin: 5px 0px;
 }
 
-.inputAnswers{
-    margin: 5px 0px;
-}
-
-.radioOptions{
-    border-radius: 10px;
-    border: 1px solid gray;
-    box-shadow:5px 5px 5px rgba(0, 0, 0, .2);
-    margin-left: .5em;
-    background-color:#fff;
-    width:auto;
-    height: 1.5em;
-}
-
-.generalOptions{
-    border-radius: 10px;
-    border: 1px solid gray;
-    box-shadow:5px 5px 5px rgba(0, 0, 0, .2);
-    margin-left: .5em;
-    background-color:#fff;
-    width:auto;
-    height: 1.5em;
-}
-
-.generalOptions_multiInput{
-    border-radius: 10px;
-    border: 1px solid gray;
-    box-shadow:5px 5px 5px rgba(0, 0, 0, .2);
-    margin-left: .5em;
-    background-color:#fff;
-    width:auto;
-    height: 3.5em;
-}
-
-.selectOptions{
-    border-radius: 10px;
-    border: 1px solid gray;
-    box-shadow:5px 5px 5px rgba(0, 0, 0, .2);
-    margin-left: .5em;
-    background-color:#fff;
-    width:auto;
-    height: 1.5em;
-}
-
 .formTitle{
     font-size:32px;
     font-weight:bold

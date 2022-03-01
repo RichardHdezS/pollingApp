@@ -30,6 +30,9 @@ header img{
     pointer-events: none;
 }
 
+.hide{
+    display: none
+}
 
 /*Styles to scrollbar*/
 ::-webkit-scrollbar{

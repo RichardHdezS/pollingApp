@@ -12,8 +12,11 @@ router.post('/signin', authController.signIn); //esta ruta nos permite autentica
 router.get('/register', authController.register);//esta ruta solo nos renderiza la vista de register
 router.post('/signup', authController.signUp);//esta ruta nos permite la autenticacion para registarnos
 router.get('/home',authController.gotoHome);
+
 router.get('/new-form', formController.newForm)
+router.post('/saveForm', formController.saveForm)
 router.get('/view/:formName',formController.viewForm);
+
 router.get('/answers/:formName', formResponsesController.viewAnswers);//recivimos el nombre del formulario, solicitamos el formulario en la BD, cargamos el objeto del formulario y redireccionamos al usuario hacia la pagina de visualizacion junto con el objeto para renderizarlo en las vistas
 
 module.exports = router;

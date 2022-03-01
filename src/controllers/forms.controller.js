@@ -9,16 +9,19 @@ function newForm(req, res){
     }
 }
 
-function viewForm(req, res){
-    //TODO obtener la informacion de este formulario y pasarlo a la vista para renderizarlo
-    if(req.session.userToken){
-        const formName = req.params['formName'];
-        return res.render('viewForm', {
-            name: formName
-        });
-    }
-    else{
-        return res.status(401).redirect('/');
+async function viewForm(req, res){
+    try{
+        if(req.session.userToken){
+            const form =  await Forms.find({title:req.params['formName']});
+            if(form.length!=0) return res.render('viewForm', {form:form[0]});
+                else return res.render('viewForm', {form:null});
+        }
+        else{
+            return res.status(401).redirect('/');
+        }
+    }catch(err){
+        console.log("Algo ha salido al visualizar el formulario ", err);
+        return res.status(500).json({errors:[{msg:"Algo salio mal al visualizar el formulario"}]})
     }
 }
 

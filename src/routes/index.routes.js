@@ -13,7 +13,7 @@ router.get('/register', authController.register);//esta ruta solo nos renderiza 
 router.post('/signup', authController.signUp);//esta ruta nos permite la autenticacion para registarnos
 router.get('/home',authController.gotoHome);
 
-router.get('/new-form', formController.newForm)
+router.get('/newForm', formController.newForm)
 router.post('/saveForm', formController.saveForm)
 router.get('/view/:formName',formController.viewForm);
 

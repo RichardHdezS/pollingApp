@@ -23,7 +23,7 @@ function seeDevInfo(){
 }
 
 function newForm(){
-    location.href="http://localhost:3000/new-form";
+    location.href="http://localhost:3000/newForm";
 }
 
 

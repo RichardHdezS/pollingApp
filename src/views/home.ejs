@@ -32,48 +32,31 @@
                         </div>
                     </div>
                     <div class="row formsContent">
-                        <div class="col-sm-11 col-md-12 col-lg-5 col-xl-4 formCard">
-                            <div class="row justify-content-end">
-                                <div class="col-5 formCard_header">
-                                    <img src="../public/images/link.png" alt="" onclick="getUrlForm('egresados')">
-                                    <a href="http://localhost:3000/answers/egresados"><img src="../public/images/char.png" alt=""></a>
-                                    <a href="http://localhost:3000/edit/egresados"><img src="../public/images/edit.png" alt=""></a>
-                                    <img src="../public/images/delete.png" alt="" onclick="deleteForm('idForm')">
-                                </div>
-                            </div>
-                            <div class="row" onclick="openForm('egresados')">
-                                <div class="row align-items-end formCard_title">
-                                    <div class="col-2"><img src="../public/images/forms.png" alt="" style="width: 70px; height:70px"></div>
-                                    <div class="col-10 formTitle">Formulario de egresados</div>
-                                </div>
-                                <div class="row formCard_body">
-                                    <div class="col-12">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia omnis, provident vel perferendis quasi culpa sunt nemo cupiditate veniam similique, laboriosam commodi voluptate deserunt in ex aut. Sed, animi reprehenderit.
+                        <% if(formularios.length!=0){ %>
+                            <% for(let index=0; index < formularios.length; index++){ %>
+                                <div class="col-sm-11 col-md-12 col-lg-5 col-xl-4 formCard">
+                                    <div class="row justify-content-end">
+                                        <div class="col-5 formCard_header">
+                                            <img src="../public/images/link.png" alt="" onclick="getUrlForm('<%= formularios[index].title %>')">
+                                            <a href="http://localhost:3000/answers/egresados"><img src="../public/images/char.png" alt=""></a>
+                                            <a href="http://localhost:3000/edit/egresados"><img src="../public/images/edit.png" alt=""></a>
+                                            <img src="../public/images/delete.png" alt="" onclick="deleteForm('<%= formularios[index]._id %>')">
+                                        </div>
+                                    </div>
+                                    <div class="row" onclick="openForm('<%= formularios[index].title %>')">
+                                        <div class="row align-items-end formCard_title">
+                                            <div class="col-2"><img src="../public/images/forms.png" alt="" style="width: 70px; height:70px"></div>
+                                            <div class="col-10 formTitle">Formulario <%= formularios[index].title %></div>
+                                        </div>
+                                        <div class="row formCard_body">
+                                            <div class="col-12">
+                                                <%= formularios[index].description %>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-11 col-md-12 col-lg-5 col-xl-4 formCard">
-                            <div class="row justify-content-end">
-                                <div class="col-5 formCard_header">
-                                    <img src="../public/images/link.png" alt="" onclick="getUrlForm('estudiantes')">
-                                    <a href="http://localhost:3000/answers/estudiantes"><img src="../public/images/char.png" alt=""></a>
-                                    <a href="http://localhost:3000/edit/estudiantes"><img src="../public/images/edit.png" alt=""></a>
-                                    <img src="../public/images/delete.png" alt="" onclick="deleteForm('idForm')">
-                                </div>
-                            </div>
-                            <div class="row" onclick="openForm('estudiantes')">
-                                <div class="row align-items-end formCard_title">
-                                    <div class="col-2"><img src="../public/images/forms.png" alt="" style="width: 70px; height:70px"></div>
-                                    <div class="col-10 formTitle">Formulario de estudiantes</div>
-                                </div>
-                                <div class="row formCard_body">
-                                    <div class="col-12">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia omnis, provident vel perferendis quasi culpa sunt nemo cupiditate veniam similique, laboriosam commodi voluptate deserunt in ex aut. Sed, animi reprehenderit.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <% } %>
+                        <% } %>
                     </div>
                 </div>
             </div>

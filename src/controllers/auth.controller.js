@@ -1,4 +1,5 @@
 const Users = require('../models/user.model');
+const Forms = require('../models/forms.model');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
@@ -49,9 +50,17 @@ function register(req, res){
         else return res.status(200).render('register')
 }
 
-function gotoHome(req, res){//TODO crear un middlerware que permita valida el token y asi verificar el acceso
-    if(req.session.userToken) return res.render('home')
-        else return res.redirect('/')
+async function gotoHome(req, res){//TODO crear un middlerware que permita valida el token y asi verificar el acceso
+    try{
+        if(req.session.userToken){
+            let formularios = await Forms.find();
+            console.log(formularios)
+            return res.render('home',{formularios});
+        } else return res.redirect('/')
+    }catch(err){
+        console.log('Algo salio mal al solicitar los frmularios');
+        return res.status(500).json({errors:[{msg:"Algo salio mal al solicitra los formularios"}]})
+    }
 }
 
 module.exports = {

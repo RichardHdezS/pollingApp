@@ -22,7 +22,7 @@ function addOption(numSeccion){
 }
 
 function chooseTypeOption(typeOption, numOption){
-    if(typeOption=='range' || typeOption=='radioButton' || typeOption=='select'){
+    if(typeOption=='range' || typeOption=='radioButton' || typeOption=='selectItems'){
         document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
         document.querySelector(`.optionAnswer${numOption}`).innerHTML=`
             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
@@ -59,6 +59,7 @@ async function saveForm(event){
     let numOptions=0;
     let countOpc =0;
     entries.forEach((item, index)=>{
+        console.log(data)
         switch(item[0]){
             case 'formTitle':
                 data.title =item[1];
@@ -86,26 +87,25 @@ async function saveForm(event){
                 break;
             case 'optionName':
                 if(data.body[numOptions].options.length == 0){
-                    data.body[numOptions].options.push({
+                    let ans={
                         optionName:item[1],
                         typeOption:entries[index+1][1],
-                    });
+                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
+                    }
+                    data.body[numOptions].options.push(ans);
                 }else{
                     countOpc+=1;
-                    data.body[numOptions].options.push({
+                    ans={
                         optionName:item[1],
                         typeOption:entries[index+1][1],
-                    });
+                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
+                    }
+                    data.body[numOptions].options.push(ans);
                 }
-                break;
-            case 'answersFromOption':
-                data.body[numOptions].options[countOpc].answers=item[1].split(';')
                 break;
         }
     });
     console.log(data);
-
-    //TODO enavir con una peticion de axios
     await savedForm(data);
 }
 
@@ -121,7 +121,7 @@ async function savedForm(data){//hacemos la peticion para validar el logueo de u
         if(result.errors) console.log(result.errors);
             else if(result.done){
                 console.log(result.done)
-                //document.location.href=`http://localhost:3000/home`
+                document.location.href=`http://localhost:3000/home`
             }
     }
     catch(err){

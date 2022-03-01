@@ -21,164 +21,70 @@
             <div class="row justify-content-center">        
                 <div class="col col-12 text-center viewFormTitle">Ver Formulario</div>
                 <div class="col col-sm-12 col-md-12 col-lg-12 contentViewForm">
-                    <form action="">
+                    <% if(form!=null) {%>
                         <div class="row formHeader">
-                            <div class="col-8 mb-3 formTitle">
-                                Cuestionario <%= name %>
-                                <!-- <input type="text" name="formTitle" class="form-control form-control-lg formTitle disableFields" value="Cuestionario de Seguimiento Egresados"> -->
-                            </div>
+                            <div class="col-8 mb-3 formTitle">Cuestionario <%= form.title %></div>
                             <div class="col-10 mb-3">
-                                <textarea name="formDescription" class="form-control formDescription disableFields" cols="20" rows="5">Este es un pequeño formulario que se aplica a los estudiantes ya titulados con el fin de ayudarlos a vincularlos a una empresa</textarea>
+                                <textarea name="formDescription" class="form-control formDescription disableFields" cols="20" rows="5"><%= form.description %></textarea>
                             </div>
                         </div>
                         <div class="row formBody">
-                            <div class="col-12 seccion">
-                                <div class="row">
+                            <% for(let indexSeccion = 0; indexSeccion < form.body.length; indexSeccion++){ %>
+                                <div class="col-12 seccion">
                                     <div class="row">
-                                        <div class="col-12 seccionName">Seccion - Perfil de Egresado</div>
+                                        <div class="row">
+                                            <div class="col-12 seccionName"><%= form.body[indexSeccion].seccionName %></div>
+                                        </div>
+                                        <div class="col-11 mb-3">
+                                            <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5"><%= form.body[indexSeccion].seccionDescription %></textarea>
+                                        </div>
                                     </div>
-                                    <div class="col-11 mb-3">
-                                        <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5">Esta es una descripcion de la seccion del perfil de usuario</textarea>
-                                    </div>
+                                    <% for(let indexOption = 0; indexOption < form.body[indexSeccion].options.length; indexOption++) { %>
+                                        <% switch (form.body[indexSeccion].options[indexOption].typeOption) { 
+                                                case "text": %>
+                                                <h1>1</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "email": %>
+                                                <h1>2</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "number": %>
+                                                <h1>3</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "range": %>
+                                                <h1>4</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "radioButton": %>
+                                                <h1>5</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "selectItems": %>
+                                                <h1>6</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "g-rango": %>
+                                                <h1>7</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "g-radios": %>
+                                                <h1>8</h1>
+                                            <!-- html -->
+                                            <% break;
+                                                case "g-items": %>
+                                                <h1>9</h1>
+                                            <!-- html -->
+                                            <% break;%>
+                                        <% } %>
+                                    <% } %>
                                 </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
-                                            Input Email
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            Ingresa Tu correo Electronico
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
-                                            Input Text
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            Ingresa tu nombre
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
-                                            Input Number
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            Ingresa tu Edad
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/radioButton.png" alt="input" style="width:40px; height:40px">
-                                            Radio Button
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            <div class="col">Sexo:</div>
-                                            <div class="row">
-                                                <div class="radioOptions">Hombre</div>
-                                                <div class="radioOptions">Mujer</div>
-                                                <div class="radioOptions">Otro</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/options.png" alt="input" style="width:40px; height:40px">
-                                            General RadioButton
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            <div class="col">Estado Civil:</div>
-                                            <div class="row">
-                                                <div class="generalOptions">Hombre</div>
-                                                <div class="generalOptions">Mujer</div>
-                                                <div class="generalOptions_multiInput">
-                                                    <div class=""><img src="../public/images/icons/input.png" alt="" style="width:40px; height:40px">Text</div>
-                                                    <div>Otro:</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/selects.png" alt="input" style="width:40px; height:40px">
-                                            Select Item
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            <div class="col">Seleccionar Carrera:</div>
-                                            <div class="row">
-                                                <div class="selectOptions">ISIC</div>
-                                                <div class="selectOptions">IFF</div>
-                                                <div class="selectOptions">IAS</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 seccion">
-                                <div class="row">
-                                    <div class="row">
-                                        <div class="col-12 seccionName">Seccion - Dominio de lenguas extrangeras</div>
-                                    </div>
-                                    <div class="col-11 mb-3">
-                                        <textarea name="seccionDescription" class="form-control seccionDescription disableFields" cols="20" rows="5">Esta es una descripcion de la seccion de "Dominio de lenguas extrangeras"</textarea>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/range.png" alt="input" style="width:40px; height:40px">
-                                            Input Range
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            <div class="question">¿Cual es tu nivel del idioma ingles?</div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-10">
-                                    <div class="row option">
-                                        <div class="col col-10 optionHeader">
-                                            <img src="../public/images/icons/options.png" alt="input" style="width:40px; height:40px">
-                                            General Input Range
-                                        </div>
-                                        <div class="col col-12 optionBody">
-                                            <div class="col">Dominio del idioma extrangero:</div>
-                                            <div class="row">
-                                                <div class="generalOptions_multiInput">
-                                                    <div class=""><img src="../public/images/icons/range.png" alt="" style="width:40px; height:40px">Input Range</div>
-                                                    <div>Frances</div>
-                                                </div>
-                                                <div class="generalOptions_multiInput">
-                                                    <div class=""><img src="../public/images/icons/range.png" alt="" style="width:40px; height:40px">Input Range</div>
-                                                    <div>Italiano</div>
-                                                </div>
-                                                <div class="generalOptions_multiInput">
-                                                    <div class=""><img src="../public/images/icons/range.png" alt="" style="width:40px; height:40px">Input Range</div>
-                                                    <div>Japones</div>
-                                                </div>
-                                                <div class="generalOptions_multiInput">
-                                                    <div class=""><img src="../public/images/icons/input.png" alt="" style="width:40px; height:40px">Text</div>
-                                                    <div>Otro</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <% } %>
                         </div>
-                    </form>
+                    <%} else {%>
+                        <div class="col-8 mb-3 formTitle">No hay formulario por mostrar</div>
+                    <% } %>
                 </div>
             </div>
         </div>

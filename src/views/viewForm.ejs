@@ -42,40 +42,181 @@
                                     <% for(let indexOption = 0; indexOption < form.body[indexSeccion].options.length; indexOption++) { %>
                                         <% switch (form.body[indexSeccion].options[indexOption].typeOption) { 
                                                 case "text": %>
-                                                <h1>1</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
+                                                        Input Text
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <%= form.body[indexSeccion].options[indexOption].optionName %>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "email": %>
-                                                <h1>2</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
+                                                        Input Email
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <%= form.body[indexSeccion].options[indexOption].optionName %>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "number": %>
-                                                <h1>3</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/input.png" alt="input" style="width:40px; height:40px">
+                                                        Input Number
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <%= form.body[indexSeccion].options[indexOption].optionName %>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "range": %>
-                                                <h1>4</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/range.png" alt="input" style="width:40px; height:40px">
+                                                        Input Range
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="question"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "radioButton": %>
-                                                <h1>5</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/radioButton.png" alt="input" style="width:40px; height:40px">
+                                                        Radio Button
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="col"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                        <div class="row">
+                                                            <% let answersRB = form.body[indexSeccion].options[indexOption].answers.split(";"); 
+                                                            for(let ans = 0; ans < answersRB.length; ans++){ %>
+                                                                <div class="radioOptions"><%= answersRB[ans] %></div>
+                                                            <% } %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "selectItems": %>
-                                                <h1>6</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/selects.png" alt="input" style="width:40px; height:40px">
+                                                        Select Item
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="col"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                        <div class="row">
+                                                            <% let answersSI = form.body[indexSeccion].options[indexOption].answers.split(";"); 
+                                                            for(let ansSI = 0; ansSI < answersSI.length; ansSI++){ %>
+                                                                <div class="selectOptions"><%= answersSI[ansSI] %></div>
+                                                            <% } %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "g-rango": %>
-                                                <h1>7</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/options.png" alt="input" style="width:40px; height:40px">
+                                                        General Input Range
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="col"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                        <div class="row">
+                                                            <% let answers_gIR = form.body[indexSeccion].options[indexOption].answers.split(";"); 
+                                                            for(let ans_gIR = 0; ans_gIR < answers_gIR.length; ans_gIR++){ %>
+                                                                <div class="generalOptions_multiInput">
+                                                                    <div class=""><img src="../public/images/icons/range.png" alt="" style="width:40px; height:40px">Input Range</div>
+                                                                    <div><%= answers_gIR[ans_gIR] %></div>
+                                                                </div>
+                                                            <% } %>
+                                                            <div class="generalOptions_multiInput">
+                                                                <div class=""><img src="../public/images/icons/input.png" alt="" style="width:40px; height:40px">Text</div>
+                                                                <div>Otro</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "g-radios": %>
-                                                <h1>8</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/options.png" alt="input" style="width:40px; height:40px">
+                                                        General Radio Buttons
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="col"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                        <div class="row">
+                                                            <% let answers_gRB = form.body[indexSeccion].options[indexOption].answers.split(";"); 
+                                                            for(let ans_gRB = 0; ans_gRB < answers_gRB.length; ans_gRB++){ %>
+                                                                <div class="generalOptions_multiInput">
+                                                                    <div class=""><img src="../public/images/icons/radioButton.png" alt="" style="width:40px; height:40px">Input Range</div>
+                                                                    <div><%= answers_gRB[ans_gRB] %></div>
+                                                                </div>
+                                                            <% } %>
+                                                            <div class="generalOptions_multiInput">
+                                                                <div class=""><img src="../public/images/icons/input.png" alt="" style="width:40px; height:40px">Text</div>
+                                                                <div>Otro</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;
                                                 case "g-items": %>
-                                                <h1>9</h1>
                                             <!-- html -->
+                                            <div class="col col-10">
+                                                <div class="row option">
+                                                    <div class="col col-10 optionHeader">
+                                                        <img src="../public/images/icons/options.png" alt="input" style="width:40px; height:40px">
+                                                        General Radio Buttons
+                                                    </div>
+                                                    <div class="col col-12 optionBody">
+                                                        <div class="col"><%= form.body[indexSeccion].options[indexOption].optionName %></div>
+                                                        <div class="row">
+                                                            <% let answers_gSI = form.body[indexSeccion].options[indexOption].answers.split(";"); 
+                                                            for(let ans_gSI = 0; ans_gSI < answers_gSI.length; ans_gSI++){ %>
+                                                                <div class="generalOptions_multiInput">
+                                                                    <div class=""><img src="../public/images/icons/select.png" alt="" style="width:40px; height:40px">Input Range</div>
+                                                                    <div><%= answers_gSI[ans_gSI] %></div>
+                                                                </div>
+                                                            <% } %>
+                                                            <div class="generalOptions_multiInput">
+                                                                <div class=""><img src="../public/images/icons/input.png" alt="" style="width:40px; height:40px">Text</div>
+                                                                <div>Otro</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% break;%>
                                         <% } %>
                                     <% } %>

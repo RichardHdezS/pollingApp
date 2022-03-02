@@ -42,8 +42,13 @@
                                 <% for(let indexSeccion = 0; indexSeccion < form.body.length; indexSeccion++){ %>
                                     <div class="col-12 seccion seccion<%= indexSeccion %>" seccion="<%= indexSeccion %>" tOptionsFromSeccion="<%= form.body[indexSeccion].options.length %>" ><!-- Obtenemos el total de opciones de la seccion -->
                                         <div class="row">
-                                            <div class="col-8">
-                                                <input type="text" name="seccionName" class="form-control seccionName" value="<%= form.body[indexSeccion].seccionName %>" placeholder="Nombre de la seccion">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <input type="text" name="seccionName" class="form-control seccionName" value="<%= form.body[indexSeccion].seccionName %>" placeholder="Nombre de la seccion">
+                                                </div>
+                                                <div class="col-1">
+                                                    <img src="../public/images/delete.png" class="deleteSeccion" alt="delete" onclick="deleteSeccion(event)">
+                                                </div>
                                             </div>
                                             <div class="col-11 mb-2">
                                                 <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5" placeholder="Descripcion de la seccion"><%= form.body[indexSeccion].seccionDescription %></textarea>
@@ -61,7 +66,7 @@
                                                     <div class="col col-10 optionHeader">
                                                         <div class="row">
                                                             <div class="col-11">Opción</div>
-                                                            <div class="col-1"><img src="../public/images/delete.png" alt="delete"></div>
+                                                            <div class="col-1"><img src="../public/images/delete.png" class="deleteOption" alt="delete" onclick="deleteOption(event)"></div>
                                                         </div>
                                                         <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="<%= form.body[indexSeccion].options[indexOption].optionName %>">
                                                     </div>
@@ -117,8 +122,13 @@
 
 <div class="col-12 seccion hide seccionModel">
     <div class="row">
-        <div class="col-8">
-            <input type="text" name="seccionName" class="form-control seccionName" value="" placeholder="Nombre de la seccion">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" name="seccionName" class="form-control seccionName" value="" placeholder="Nombre de la seccion">
+            </div>
+            <div class="col-1">
+                <img src="../public/images/delete.png" class="deleteSeccion" alt="delete" onclick="deleteSeccion(event)">
+            </div>
         </div>
         <div class="col-11 mb-2">
             <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5" placeholder="Descripcion de la seccion"></textarea>
@@ -139,7 +149,7 @@
         <div class="col col-10 optionHeader">
             <div class="row">
                 <div class="col-11">Opción</div>
-                <div class="col-1"><img src="../public/images/delete.png" alt="delete"></div>
+                <div class="col-1"><img src="../public/images/delete.png" class="deleteOption" alt="delete" onclick="deleteOption(event)"></div>
             </div>
             <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="">
         </div>

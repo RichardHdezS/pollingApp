@@ -60,7 +60,7 @@ function getUrlForm(formName){
     })
 }
 
-async function deleteForm(id){
+async function deleteForm(formId){
     Swal.fire({
         title: '¿Estas seguro de eliminar este formulario?',
         text: "Toda la informacion hacerca de este formulario sera borrada, resaultados, estadisticas, etc.",
@@ -70,13 +70,37 @@ async function deleteForm(id){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, borrar',
         cancelButtonText: 'Cancelar'
-        }).then((result) => {
+        }).then(async (result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-            'Borrado',
-            'El formulario ha sido borrado',
-            'success'
-            )
+            let hecho = await deletedForm(formId);
+            if(hecho.done){
+                Swal.fire({
+                    title:'Borrado',
+                    text:'El formulario ha sido borrado',
+                    icon:'success',
+                    allowOutsideClick:false
+                }
+                ).then((resul)=>{
+                    if(resul.isConfirmed) document.location.href=`http://localhost:3000/home`;
+                    });
+            }
         }
         })
+}
+
+async function deletedForm(formId){
+    try{
+        let result=null;
+        await axios.delete(`http://localhost:3000/form/${formId}`).then((res)=>{
+            result = res.data
+        }).catch((err)=>{
+            result=err.response.data;
+        });
+        if(result.errors) console.log(result.errors);
+            else return result;
+            
+    }
+    catch(err){
+        console.log("Algo ha salido mal eliminar el formulario " + err);
+    }
 }

@@ -50,11 +50,30 @@ async function updateForm(req, res){
             }).clone().catch(function(err){ console.log(err)});
             return res.status(201).json({done:"El formulario ha sido actualizado correctamente"});
         }else{
-            return res.status(401).redirect('/')
+            return res.status(401).redirect('/');
         }
     }catch(err){
         console.log(`Algo ha ocurrido al actualizar el formuario ${err}`)
         return res.status(500).json({errors:[{msg:`Algo salió mal al actualizar formulario`}]})
+    }
+}
+
+async function deleteForm(req, res){
+    try{
+        if(req.session.userToken){
+            await Forms.deleteOne({_id:req.params['formId']}, async(err, numAffected)=>{
+                if(err) throw new Error(err);
+                    else{
+                        console.log(numAffected);
+                    }
+            }).clone().catch(function(err){ console.log(err)});
+            return res.status(200).json({done:'El mensaje ha sido eliminado correctamente'});
+        } else{
+            return res.status(401).redirect('/');
+        }
+    }catch(err){
+        console.log(`Algo ha ocurrido al eliminar el formuario ${err}`)
+        return res.status(500).json({errors:[{msg:`Algo salió mal al eliminar formulario`}]})
     }
 }
 
@@ -79,5 +98,6 @@ module.exports={
     renderView_newForm,
     saveForm,
     renderView_editForm,
-    updateForm
+    updateForm,
+    deleteForm
 }

@@ -39,9 +39,14 @@ function chooseTypeOption(typeOption, numOption){
         document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
     }
 }
-// document.querySelector('#newForm').addEventListener('submit', event=>{
-//     event.preventDefault()
-// })
+
+function deleteSeccion(event){
+    event.target.parentElement.parentElement.parentElement.parentElement.remove();
+}
+
+function deleteOption(event){
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+}
 
 async function saveForm(event){
     event.preventDefault();

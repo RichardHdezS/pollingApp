@@ -139,6 +139,15 @@ async function saveForm(event, idForm){
     await editForm(data, idForm);
 }
 
+function deleteSeccion(event){
+    event.target.parentElement.parentElement.parentElement.parentElement.remove();
+}
+
+function deleteOption(event){
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+}
+
+
 async function editForm(data, formId){//hacemos la peticion para validar el logueo de un usuario
     try{
         let result=null;

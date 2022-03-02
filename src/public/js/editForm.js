@@ -1,43 +1,75 @@
 let countSeccions = 0, countOptions = 0;
 function addFormSeccion(){
-    countSeccions+=1;
-    let seccion = document.querySelector('.seccionModel').cloneNode(true);
-    seccion.classList.remove('seccionModel');
-    seccion.classList.remove('hide');
-    seccion.classList.add(`seccion${countSeccions}`);
-    seccion.setAttribute('seccion', countSeccions);
-    seccion.querySelector('.btnAddOption').setAttribute('btnSeccion',countSeccions)
-    document.querySelector('.formBody').appendChild(seccion);
+    if(countSeccions!=0){
+        countSeccions++;
+        console.log(countOptions)
+        let seccion = document.querySelector('.seccionModel').cloneNode(true);
+        seccion.classList.remove('seccionModel');
+        seccion.classList.remove('hide');
+        seccion.classList.add(`seccion${countSeccions}`);
+        seccion.setAttribute('seccion', countSeccions);
+        seccion.querySelector('.btnAddOption').setAttribute('btnSeccion',countSeccions)
+        document.querySelector('.formBody').appendChild(seccion);
+    }
+    else{
+        countSeccions = document.querySelector('.formBody').getAttribute('tSeccions');
+        countSeccions++;
+        console.log('Era 0 en seccion '+countSeccions)
+        let seccion = document.querySelector('.seccionModel').cloneNode(true);
+        seccion.classList.remove('seccionModel');
+        seccion.classList.remove('hide');
+        seccion.classList.add(`seccion${countSeccions}`);
+        seccion.setAttribute('seccion', countSeccions);
+        seccion.querySelector('.btnAddOption').setAttribute('btnSeccion',countSeccions)
+        document.querySelector('.formBody').appendChild(seccion);
+    }
 }
 
 function addOption(numSeccion){
-    //obtenemos el total de opciones de la seccion
-    countOptions+=1;
-    let newOption = document.querySelector('.optionModel').cloneNode(true);
-    newOption.classList.remove('optionModel');
-    newOption.classList.remove('hide');
-    newOption.classList.add(`option${countOptions}`);
-    newOption.querySelector('.selectTypeOption').setAttribute('option', countOptions);
-    newOption.querySelector('.Answers').classList.add(`optionAnswer${countOptions}`)
-    document.querySelector(`.seccion${numSeccion}`).appendChild(newOption);
+    if(countOptions!=0){
+        countOptions++;
+        console.log(countOptions)
+        let newOption = document.querySelector('.optionModel').cloneNode(true);
+        newOption.classList.remove('optionModel');
+        newOption.classList.remove('hide');
+        newOption.classList.add(`option${countOptions}`);
+        newOption.querySelector('.selectTypeOption').setAttribute('option', countOptions);
+        newOption.querySelector('.selectTypeOption').setAttribute('seccion', numSeccion);
+        newOption.querySelector('.Answers').classList.add(`optionAnswer${countOptions}`)
+        document.querySelector(`.seccion${numSeccion}`).appendChild(newOption);
+    }
+    else{
+        countOptions = document.querySelector(`.seccion${numSeccion}`).getAttribute('tOptionsFromSeccion');
+        countOptions++;
+        console.log('Era 0 en options '+countOptions)
+        let newOption = document.querySelector('.optionModel').cloneNode(true);
+        newOption.classList.remove('optionModel');
+        newOption.classList.remove('hide');
+        newOption.classList.add(`option${countOptions}`);
+        newOption.querySelector('.selectTypeOption').setAttribute('option', countOptions);
+        newOption.querySelector('.selectTypeOption').setAttribute('seccion', numSeccion);
+        newOption.querySelector('.Answers').classList.add(`optionAnswer${countOptions}`);
+        document.querySelector(`.seccion${numSeccion}`).appendChild(newOption);
+    }
+    
 }
 
-function chooseTypeOption(typeOption, numOption){
+function chooseTypeOption(typeOption, numOption, numSeccion){
+    console.log(typeOption, numOption, numSeccion)
+    let selectroSeccion = document.querySelector(`.seccion${numSeccion}`);
     if(typeOption=='range' || typeOption=='radioButton' || typeOption=='selectItems'){
-        document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
-        document.querySelector(`.optionAnswer${numOption}`).innerHTML=`
+        selectroSeccion.querySelector(`.optionAnswer${numOption}`).innerHTML=`
             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
             <textarea name="answersFromOption" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"></textarea>
         `
     }else if(typeOption=='g-rango' || typeOption=='g-radios' || typeOption=='g-items'){
-        document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
-        document.querySelector(`.optionAnswer${numOption}`).innerHTML=`
+        selectroSeccion.querySelector(`.optionAnswer${numOption}`).innerHTML=`
             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
             <textarea name="answersFromOption" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"></textarea>
             <div class="form-text">Esta opcion habilitara un campo de texto en el formulario que funcionara como respuesta alternativa a las anteriormente dadas)</div>                                      
         `
     }else{
-        document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
+        selectroSeccion.querySelector(`.optionAnswer${numOption}`).innerHTML=""
     }
 }
 // document.querySelector('#newForm').addEventListener('submit', event=>{
@@ -58,9 +90,7 @@ async function saveForm(event){
     }
 
     let numOptions=0;
-    let countOpc =0;
     entries.forEach((item, index)=>{
-        console.log(data)
         switch(item[0]){
             case 'formTitle':
                 data.title =item[1];
@@ -87,22 +117,21 @@ async function saveForm(event){
                 }
                 break;
             case 'optionName':
-                if(data.body[numOptions].options.length == 0){
-                    let ans={
-                        optionName:item[1],
-                        typeOption:entries[index+1][1],
-                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
+                    if(entries[index+2]){
+                        let ans={
+                            optionName:item[1],
+                            typeOption:entries[index+1][1],
+                            answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1]:[]
+                        }
+                        data.body[numOptions].options.push(ans);
+                    }else{
+                        let ans={
+                            optionName:item[1],
+                            typeOption:entries[index+1][1],
+                            answers:[]
+                        }
+                        data.body[numOptions].options.push(ans);
                     }
-                    data.body[numOptions].options.push(ans);
-                }else{
-                    countOpc+=1;
-                    ans={
-                        optionName:item[1],
-                        typeOption:entries[index+1][1],
-                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
-                    }
-                    data.body[numOptions].options.push(ans);
-                }
                 break;
         }
     });

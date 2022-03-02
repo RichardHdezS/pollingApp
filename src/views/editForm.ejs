@@ -28,7 +28,8 @@
                         </div>
                     </div>
                     <form id="newForm">
-                        <% if(form!=null) {%>
+                        <% let countOptions=0;
+                            if(form!=null) {%>
                             <div class="row formHeader">
                                 <div class="col-8 mb-3 formTitle">
                                     <input type="text" name="formTitle" class="form-control form-control-lg formTitle" value="<%= form.title %>" placeholder="Titulo del formulario">
@@ -65,7 +66,7 @@
                                                         <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="<%= form.body[indexSeccion].options[indexOption].optionName %>">
                                                     </div>
                                                     <div class="col col-6 optionBody">
-                                                        <select name="typeOption" class="form-select selectTypeOption" option="<%= indexOption %>" onChange="chooseTypeOption(this.options[this.selectedIndex].value, this.getAttribute('option'))">
+                                                        <select name="typeOption" class="form-select selectTypeOption" option="<%= indexOption %>" seccion="<%= indexSeccion %>" onChange="chooseTypeOption(this.options[this.selectedIndex].value, this.getAttribute('option'), this.getAttribute('seccion'))">
                                                             <option value="">Selecciona tipo de campo</option>
                                                             <option value="text" <%= (form.body[indexSeccion].options[indexOption].typeOption == 'text')? 'selected':'' %> >Texto</option>
                                                             <option value="email" <%= (form.body[indexSeccion].options[indexOption].typeOption == 'email')? 'selected':'' %> >Email</option>
@@ -109,10 +110,55 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../public/js/newForm.js"></script>
+    <script src="../public/js/editForm.js"></script>
 </body>
 </html>
 
+
+<div class="col-12 seccion hide seccionModel">
+    <div class="row">
+        <div class="col-8">
+            <input type="text" name="seccionName" class="form-control seccionName" value="" placeholder="Nombre de la seccion">
+        </div>
+        <div class="col-11 mb-2">
+            <textarea name="seccionDescription" class="form-control seccionDescription" cols="20" rows="5" placeholder="Descripcion de la seccion"></textarea>
+        </div>
+        <div class="row d-flx justify-content-start btnAddOption" onclick="addOption(this.getAttribute('btnSeccion'))">
+            <div class="col col-sm-5 col-md-4 col-lg-3 col-xl-2 text-center addOption">
+                <img src="../public/images/icons/addOption.png" alt="">
+                Nueva Opción
+            </div>
+        </div>
+    </div>
+    
+</div>
+
 <!-- normal option -->
-
-
+<div class="col col-sm-12 col-md-12 col-lg-10 col-xl-8 hide optionModel">
+    <div class="row option">
+        <div class="col col-10 optionHeader">
+            <div class="row">
+                <div class="col-11">Opción</div>
+                <div class="col-1"><img src="../public/images/delete.png" alt="delete"></div>
+            </div>
+            <input type="text" name="optionName" class="form-control" placeholder="Nombre de la opcion" value="">
+        </div>
+        <div class="col col-6 optionBody">
+            <select name="typeOption" class="form-select selectTypeOption" onChange="chooseTypeOption(this.options[this.selectedIndex].value, this.getAttribute('option'), this.getAttribute('seccion'))">
+                <option value="" selected>Selecciona tipo de campo</option>
+                <option value="text">Texto</option>
+                <option value="email">Email</option>
+                <option value="number">Numerico</option>
+                <option value="range">Rango</option>
+                <option value="radioButton">Radio Buttons</option>
+                <option value="selectItems">Items</option>
+                <option value="g-rango">General Rango</option>
+                <option value="g-radios">General Radio Buttons</option>
+                <option value="g-items">General Items</option>
+            </select>
+        </div>
+        <div class="col col-9 Answers">
+            
+        </div>
+    </div>
+</div>

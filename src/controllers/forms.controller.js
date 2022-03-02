@@ -9,6 +9,17 @@ function newForm(req, res){
     }
 }
 
+async function editForm(req, res){
+    if(req.session.userToken){
+        let forName = req.params['formName'];
+        let form = await Forms.find({title:forName});
+        if(form.length!=0) return res.render('editForm',{form:form[0]});
+            else return res.render('editForm',{form:null});
+    }else{
+        return res.status(401).redirect('/')
+    }
+}
+
 async function viewForm(req, res){
     try{
         if(req.session.userToken){
@@ -41,5 +52,6 @@ async function saveForm(req, res){
 module.exports={
     viewForm,
     newForm,
-    saveForm
+    saveForm,
+    editForm
 }

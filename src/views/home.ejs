@@ -39,7 +39,7 @@
                                         <div class="col-5 formCard_header">
                                             <img src="../public/images/link.png" alt="" onclick="getUrlForm('<%= formularios[index].title %>')">
                                             <a href="http://localhost:3000/answers/egresados"><img src="../public/images/char.png" alt=""></a>
-                                            <a href="http://localhost:3000/edit/egresados"><img src="../public/images/edit.png" alt=""></a>
+                                            <a href="http://localhost:3000/edit/<%= formularios[index].title %>"><img src="../public/images/edit.png" alt=""></a>
                                             <img src="../public/images/delete.png" alt="" onclick="deleteForm('<%= formularios[index]._id %>')">
                                         </div>
                                     </div>

@@ -14,6 +14,7 @@ router.post('/signup', authController.signUp);//esta ruta nos permite la autenti
 router.get('/home',authController.gotoHome);
 
 router.get('/newForm', formController.newForm)
+router.get('/edit/:formName', formController.editForm)
 router.post('/saveForm', formController.saveForm)
 router.get('/view/:formName',formController.viewForm);
 

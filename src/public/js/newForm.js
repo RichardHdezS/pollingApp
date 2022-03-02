@@ -86,22 +86,21 @@ async function saveForm(event){
                 }
                 break;
             case 'optionName':
-                if(data.body[numOptions].options.length == 0){
-                    let ans={
-                        optionName:item[1],
-                        typeOption:entries[index+1][1],
-                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
+                    if(entries[index+2]){
+                        let ans={
+                            optionName:item[1],
+                            typeOption:entries[index+1][1],
+                            answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1]:[]
+                        }
+                        data.body[numOptions].options.push(ans);
+                    }else{
+                        let ans={
+                            optionName:item[1],
+                            typeOption:entries[index+1][1],
+                            answers:[]
+                        }
+                        data.body[numOptions].options.push(ans);
                     }
-                    data.body[numOptions].options.push(ans);
-                }else{
-                    countOpc+=1;
-                    ans={
-                        optionName:item[1],
-                        typeOption:entries[index+1][1],
-                        answers:(entries[index+2][0]=='answersFromOption')?entries[index+2][1].split(';'):[]
-                    }
-                    data.body[numOptions].options.push(ans);
-                }
                 break;
         }
     });

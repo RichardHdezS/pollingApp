@@ -76,7 +76,7 @@ function chooseTypeOption(typeOption, numOption, numSeccion){
 //     event.preventDefault()
 // })
 
-async function saveForm(event){
+async function saveForm(event, idForm){
     event.preventDefault();
     let newForm = document.querySelector('#newForm');
     let formdata = new FormData(newForm);
@@ -136,13 +136,13 @@ async function saveForm(event){
         }
     });
     console.log(data);
-    //await savedForm(data);
+    await editForm(data, idForm);
 }
 
-async function savedForm(data){//hacemos la peticion para validar el logueo de un usuario
+async function editForm(data, formId){//hacemos la peticion para validar el logueo de un usuario
     try{
         let result=null;
-        await axios.post(`http://localhost:3000/saveForm`, data).then((res)=>{
+        await axios.put(`http://localhost:3000/edit/${formId}`, data).then((res)=>{
             result = res.data
         }).catch((err)=>{
             result=err.response.data;

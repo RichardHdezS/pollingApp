@@ -41,6 +41,9 @@ function getUrlForm(formName){
         confirmButtonText: 'Copiar!'
     }).then((result) => {
         if (result.isConfirmed) {
+            var copyText = document.querySelector(".swal2-input");
+            copyText.select();
+            document.execCommand("copy");
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',

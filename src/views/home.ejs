@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Fonts -->
+    <!-- Fonts Styles-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;1,100;1,200&family=Roboto:wght@100&family=Ropa+Sans:ital@0;1&family=Source+Sans+Pro:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
-    <!-- General styles -->
+    <!-- General and libs styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/hover-min.css" media="all">
     <link rel="stylesheet" href="../public/css/styles.css">
     <!-- Unique styles -->
     <link rel="stylesheet" href="../public/css/home.styles.css">
@@ -22,19 +23,19 @@
                 <div class="col col-12 text-center homeTitle">ITSA FORMS</div>
                 <div class="col col-sm-12 col-md-10 col-lg-12 contentHome">
                     <div class="row">
-                        <div class="col-2 btn_addForm" onclick="newForm()">
+                        <div class="col-2 btn_addForm hvr-bob" onclick="newForm()">
                             <img src="../public/images/add_form.png" alt="add_form">
                             Nuevo Formulario
                         </div>
                         <div class="col-9 infoImages">
-                            <img src="../public/images/info_school.png" alt="" onclick="seeSchoolInfo()">
-                            <img src="../public/images/information2.png" alt="" onclick="seeDevInfo()">
+                            <img src="../public/images/info_school.png" alt="school info" class="hvr-bob" onclick="seeSchoolInfo()">
+                            <img src="../public/images/information2.png" alt="dev info" class="hvr-bob" onclick="seeDevInfo()">
                         </div>
                     </div>
                     <div class="row formsContent">
                         <% if(formularios.length!=0){ %>
                             <% for(let index=0; index < formularios.length; index++){ %>
-                                <div class="col-sm-11 col-md-12 col-lg-5 col-xl-4 formCard">
+                                <div class="col-sm-11 col-md-12 col-lg-5 col-xl-4 formCard hvr-bob">
                                     <div class="row justify-content-end">
                                         <div class="col-5 formCard_header">
                                             <img src="../public/images/link.png" alt="" onclick="getUrlForm('<%= formularios[index].title %>')">

@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;1,100;1,200&family=Roboto:wght@100&family=Ropa+Sans:ital@0;1&family=Source+Sans+Pro:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
-
+    <!-- General and libs styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/hover-min.css" media="all">
     <link rel="stylesheet" href="../public/css/styles.css">
+    <!-- Unique Styles -->
     <link rel="stylesheet" href="../public/css/register.styles.css">
     <title>Pollin App - Registro</title>
 </head>
@@ -18,11 +22,11 @@
     <body>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col col-sm-12 col-md-10 col-lg-7 contentSignUp">
-                    <div class="row">
+                <div class="col col-sm-12 col-md-10 col-lg-7 contentSignUp animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="row animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="col col-1"><img src="../public/images/itsa.png" alt="itsa"></div>
                     </div>
-                    <div class="row">
+                    <div class="row animate__animated animate__fadeInUp animate__delay-1s">
                         <form id="registerUser">
                             <div class="col col-12 text-start signUp mb-2">Registrarse</div>
                             <div class="row">
@@ -43,11 +47,12 @@
                                 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo Institucional">
                                 <div id="emailHelp" class="form-text">Debes contar con tu correo institucional</div>
                             </div>
-                            <div class="row mb-5">
+                            <div class="row mb-2">
                                 <div class="col col-6"><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña"></div>
                                 <div class="col col-6"><input type="password" id="inputConfirmPassword" name="comfirmPassword" class="form-control" placeholder="Confirmar"></div>
                             </div>
-                            <div class="col col-12 d-flex justify-content-end"><button class="buttonSignUp">Entrar</button></div>
+                            <div id="emailHelp" class="form-text"><a href="http://localhost:3000/" class="login hvr-bounce-to-right">Inicia Sesion</a></div>
+                            <div class="col col-12 d-flex justify-content-end"><button class="buttonSignUp hvr-bob">Entrar</button></div>
                         </form>
                     </div>
                 </div>

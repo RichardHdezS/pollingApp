@@ -1,0 +1,52 @@
+.contentForm{
+    background: rgb(255,253,253);
+    background: linear-gradient(143deg, rgba(255,253,253,1) 21%, rgba(208,208,208,1) 100%);
+    border-radius:20px;
+    padding:30px;
+    margin-top:5%
+}
+
+.formTitle{
+    font-size:42px;
+    font-weight:bold
+}
+
+.formDescription{
+    font-size:25px;
+    color:rgb(122, 122, 122)
+}
+
+.formBody{
+    border:1px solid black;
+    border-radius:30px;
+    margin:10px;
+    padding:5px;
+    background: rgb(182,182,182);
+    background: linear-gradient(275deg, rgba(182,182,182,0.4962359943977591) 0%, rgba(235,235,236,1) 100%);
+    box-shadow: -2px 6px 19px -3px rgba(0,0,0,0.71);
+    -webkit-box-shadow: -2px 6px 19px -3px rgba(0,0,0,0.71);
+    -moz-box-shadow: -2px 6px 19px -3px rgba(0,0,0,0.71);
+}
+
+.section{
+    border:1px solid;
+    margin: 10px;
+    padding:5px;
+    border-radius: 10px;
+    box-shadow: 7px 6px 21px -6px rgba(0,0,0,0.64);
+    -webkit-box-shadow: 7px 6px 21px -6px rgba(0,0,0,0.64);
+    -moz-box-shadow: 7px 6px 21px -6px rgba(0,0,0,0.64);
+}
+
+.seccionName h2{
+    font-size:32px;
+    font-weight:bold;
+    padding-left:5px
+}
+
+.seccionDescription{
+    font-size:20px;
+    color:rgb(100, 100, 100);
+    margin:5px 15px;
+    padding:5px;
+}

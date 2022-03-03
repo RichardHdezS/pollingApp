@@ -17,8 +17,9 @@ router.get('/newForm', formController.renderView_newForm);
 router.post('/saveForm', formController.saveForm);
 router.get('/edit/:formName', formController.renderView_editForm);
 router.put('/edit/:formId', formController.updateForm)
-router.get('/view/:formName',formController.viewForm);
 router.delete('/form/:formId',formController.deleteForm);
+router.get('/view/:formName',formController.viewForm);
+router.get('/form/:formName', formController.respondForm);
 
 router.get('/answers/:formName', formResponsesController.viewAnswers);//recivimos el nombre del formulario, solicitamos el formulario en la BD, cargamos el objeto del formulario y redireccionamos al usuario hacia la pagina de visualizacion junto con el objeto para renderizarlo en las vistas
 

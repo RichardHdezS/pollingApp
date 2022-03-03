@@ -93,11 +93,23 @@ async function viewForm(req, res){
     }
 }
 
+async function respondForm(req, res){
+    try{
+        let form =  await Forms.find({title:req.params['formName']});
+        if(form.length!=0) return res.status(200).render('form', {form:form[0]});
+            else return res.status(404).render('form', {form:null});
+    }catch(err){
+        console.log("Algo ha salido al visualizar el formulario ", err);
+        return res.status(500).redirect('/');
+    }
+}
+
 module.exports={
     viewForm,
     renderView_newForm,
     saveForm,
     renderView_editForm,
     updateForm,
-    deleteForm
+    deleteForm,
+    respondForm
 }

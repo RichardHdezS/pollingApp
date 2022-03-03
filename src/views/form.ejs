@@ -1,1 +1,174 @@
-<!-- Este archivo servira para visualizar los formularios creados -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;1,100;1,200&family=Roboto:wght@100&family=Ropa+Sans:ital@0;1&family=Source+Sans+Pro:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/form.styles.css">
+    <title>Formularios Itsa</title>
+</head>
+<body>
+    <%- include('partials/header'); %>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-sm-12 col-md-10 col-lg-10 contentForm">
+                    <div class="row">
+                        <% if(form!=null) {%>
+                            <form id="registerUser">
+                                <section class="row formHeader">
+                                    <div class="col col-12 text-center">
+                                        <h1 class="formTitle"><%= form.title %></h1>
+                                    </div>
+                                    <div class="col col-12 formDescription">
+                                        <%= form.description %>
+                                    </div>
+                                </section>
+                                <section class="row d-flex justify-content-center formBody">
+                                    <% for(let indexSection = 0; indexSection < form.body.length; indexSection++) {%>
+                                        <div class="col col-11 section">
+                                            <div class="row seccionHeader">
+                                                <div class="col col-10 text-start seccionName">
+                                                    <h2><%= form.body[indexSection].seccionName %></h2>
+                                                </div>
+                                                <div class="col col-11 seccionDescription text-start">
+                                                    <%= form.body[indexSection].seccionDescription %>
+                                                </div>
+                                            </div>
+                                            <div class="row seccionQuestions">
+                                                <% for(let indexOption = 0; indexOption < form.body[indexSection].options.length; indexOption++) { %>
+                                                    <% switch (form.body[indexSection].options[indexOption].typeOption) { 
+                                                            case "text": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput"><input type="text" class="form-control" value="" required></div>
+                                                            </div>
+                                                        <% break;
+                                                            case "email": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput"><input type="email" class="form-control" value="" required></div>
+                                                            </div>
+                                                        <% break;
+                                                            case "number": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput"><input type="number" class="form-control" value="" required></div>
+                                                            </div>
+                                                        <% break;
+                                                            case "range": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput"><input type="range" class="form-range" min="0" max="10"></div>
+                                                            </div>
+                                                        <% break;
+                                                            case "radioButton": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput">
+                                                                    <% let answersRB = form.body[indexSection].options[indexOption].answers.split(";");
+                                                                        for(let indexRB = 0; indexRB < answersRB.length; indexRB++) { %>
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                                                <label class="form-check-label" for="flexRadioDefault1"><%= answersRB[indexRB] %></label>
+                                                                            </div>
+                                                                    <% } %>
+                                                                </div>
+                                                            </div>
+                                                        <% break;
+                                                            case "selectItems": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput">
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option selected>Selecciona una opción</option>
+                                                                        <% let answersSI = form.body[indexSection].options[indexOption].answers.split(";");
+                                                                            for(let indexSI = 0; indexSI < answersSI.length; indexSI++) { %>
+                                                                                <option value="<%= answersSI[indexSI] %>"><%= answersSI[indexSI] %></option>
+                                                                        <% } %>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        <% break;
+                                                            case "g-rango": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput">
+                                                                    <% let answers_gRA = form.body[indexSection].options[indexOption].answers.split(";");
+                                                                        for(let index_gRA = 0; index_gRA < answers_gRA.length; index_gRA++) { %>
+                                                                            <label for="exampleInputEmail1" class="form-label"><%= answers_gRA[index_gRA] %></label>
+                                                                            <div class="col col-12 questionInput"><input type="range" class="form-range" min="0" max="10"></div>
+                                                                    <% } %>
+                                                                    <label for="exampleInputEmail1" class="form-label">Otro</label>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                        <% break;
+                                                            case "g-radios": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput">
+                                                                    <% let answers_gRB = form.body[indexSection].options[indexOption].answers.split(";");
+                                                                        for(let index_gRB = 0; index_gRB < answers_gRB.length; index_gRB++) { %>
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                                                <label class="form-check-label" for="flexRadioDefault1"><%= answers_gRB[index_gRB] %></label>
+                                                                            </div>
+                                                                    <% } %>
+                                                                    <label for="exampleInputEmail1" class="form-label">Otro</label>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                        <% break;
+                                                            case "g-items": %>
+                                                            <!-- html -->
+                                                            <div class="row question">
+                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
+                                                                <div class="col col-12 questionInput">
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option selected>Selecciona una opción</option>
+                                                                        <% let answers_gSI = form.body[indexSection].options[indexOption].answers.split(";");
+                                                                            for(let index_gSI = 0; index_gSI < answersSI.length; index_gSI++) { %>
+                                                                                <option value="<%= answersSI[indexSI] %>"><%= answers_gSI[index_gSI] %></option>
+                                                                        <% } %>
+                                                                    </select>
+                                                                    <label for="exampleInputEmail1" class="form-label">Otro</label>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                        <% break;%>
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                </section>
+                            </form>
+                            <% } else { %>
+                                <h1>Formulario no encontrado</h1>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../public/js/register.js"></script>
+</body>
+</html>

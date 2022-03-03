@@ -41,42 +41,50 @@
                                                     <%= form.body[indexSection].seccionDescription %>
                                                 </div>
                                             </div>
-                                            <div class="row seccionQuestions">
+                                            <div class="row seccionQuestions f-flex justify-content-start">
                                                 <% for(let indexOption = 0; indexOption < form.body[indexSection].options.length; indexOption++) { %>
                                                     <% switch (form.body[indexSection].options[indexOption].typeOption) { 
                                                             case "text": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput"><input type="text" class="form-control" value="" required></div>
+                                                                <div class="col col-11 questionInput"><input type="text" class="form-control" value="" required></div>
                                                             </div>
                                                         <% break;
                                                             case "email": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput"><input type="email" class="form-control" value="" required></div>
+                                                                <div class="col col-11 questionInput"><input type="email" class="form-control" value="" required></div>
                                                             </div>
                                                         <% break;
                                                             case "number": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput"><input type="number" class="form-control" value="" required></div>
+                                                                <div class="col col-11 questionInput"><input type="number" class="form-control" value="" required></div>
                                                             </div>
                                                         <% break;
                                                             case "range": %>
                                                             <!-- html -->
-                                                            <div class="row question">
-                                                                <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput"><input type="range" class="form-range" min="0" max="10"></div>
+                                                            <div class="col col-11 question">
+                                                                <%  
+                                                                    let labelRange = form.body[indexSection].options[indexOption].optionName;
+                                                                    let lavelValue = labelRange.split(" ").join("");
+                                                                    let oninputValue=`oninput=amount${lavelValue}.value=rangeInput${lavelValue}.value`; 
+                                                                %>
+                                                                <div class="col col-12 questionName"><%=labelRange%>:</div>
+                                                                <div class="col col-11 questionInput">
+                                                                    <output name="amount<%=lavelValue%>" for="rangeInput<%=lavelValue%>">0</output>
+                                                                    <input type="range" class="form-range outputRange" name="rangeInput<%=lavelValue%>" min="0" max="100" value="0" <%=oninputValue%>>
+                                                                </div>
                                                             </div>
                                                         <% break;
                                                             case "radioButton": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput">
+                                                                <div class="col col-11 questionInput">
                                                                     <% let answersRB = form.body[indexSection].options[indexOption].answers.split(";");
                                                                         for(let indexRB = 0; indexRB < answersRB.length; indexRB++) { %>
                                                                             <div class="form-check">
@@ -89,9 +97,9 @@
                                                         <% break;
                                                             case "selectItems": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput">
+                                                                <div class="col col-11 questionInput">
                                                                     <select class="form-select" aria-label="Default select example">
                                                                         <option selected>Selecciona una opción</option>
                                                                         <% let answersSI = form.body[indexSection].options[indexOption].answers.split(";");
@@ -104,13 +112,18 @@
                                                         <% break;
                                                             case "g-rango": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput">
-                                                                    <% let answers_gRA = form.body[indexSection].options[indexOption].answers.split(";");
-                                                                        for(let index_gRA = 0; index_gRA < answers_gRA.length; index_gRA++) { %>
-                                                                            <label for="exampleInputEmail1" class="form-label"><%= answers_gRA[index_gRA] %></label>
-                                                                            <div class="col col-12 questionInput"><input type="range" class="form-range" min="0" max="10"></div>
+                                                                <div class="col col-11 questionInput">
+                                                                    <% let answers_gRA = form.body[indexSection].options[indexOption].answers.split(" ").join("");
+                                                                        answers_gRA=answers_gRA.split(";")
+                                                                        for(let index_gRA = 0; index_gRA < answers_gRA.length; index_gRA++) { 
+                                                                                let val=`oninput=amount${answers_gRA[index_gRA]}.value=rangeInput${answers_gRA[index_gRA]}.value` %>
+                                                                            <label for="exampleInputEmail1" class="form-label"><%= answers_gRA[index_gRA] %>:</label>
+                                                                            <div class="col col-12 outputRange">
+                                                                                <output name="amount<%=answers_gRA[index_gRA]%>" for="rangeInput<%=answers_gRA[index_gRA]%>" class="">0</output>
+                                                                                <input type="range" class="form-range" name="rangeInput<%=answers_gRA[index_gRA]%>" min="0" max="100" value="0" <%=val%>>
+                                                                            </div>
                                                                     <% } %>
                                                                     <label for="exampleInputEmail1" class="form-label">Otro</label>
                                                                     <input type="text" class="form-control" value="">
@@ -119,9 +132,9 @@
                                                         <% break;
                                                             case "g-radios": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput">
+                                                                <div class="col col-11 questionInput">
                                                                     <% let answers_gRB = form.body[indexSection].options[indexOption].answers.split(";");
                                                                         for(let index_gRB = 0; index_gRB < answers_gRB.length; index_gRB++) { %>
                                                                             <div class="form-check">
@@ -136,9 +149,9 @@
                                                         <% break;
                                                             case "g-items": %>
                                                             <!-- html -->
-                                                            <div class="row question">
+                                                            <div class="col col-11 question">
                                                                 <div class="col col-12 questionName"><%= form.body[indexSection].options[indexOption].optionName %></div>
-                                                                <div class="col col-12 questionInput">
+                                                                <div class="col col-11 questionInput">
                                                                     <select class="form-select" aria-label="Default select example">
                                                                         <option selected>Selecciona una opción</option>
                                                                         <% let answers_gSI = form.body[indexSection].options[indexOption].answers.split(";");
@@ -157,6 +170,11 @@
                                         </div>
                                     <% } %>
                                 </section>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col col-2 mt-3">
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </div>
+                                </div>
                             </form>
                             <% } else { %>
                                 <h1>Formulario no encontrado</h1>

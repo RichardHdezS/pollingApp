@@ -57,7 +57,7 @@ function addOption(numSeccion){
 function chooseTypeOption(typeOption, numOption, numSeccion){
     console.log(typeOption, numOption, numSeccion)
     let selectroSeccion = document.querySelector(`.seccion${numSeccion}`);
-    if(typeOption=='range' || typeOption=='radioButton' || typeOption=='selectItems'){
+    if(typeOption=='radioButton' || typeOption=='selectItems'){
         selectroSeccion.querySelector(`.optionAnswer${numOption}`).innerHTML=`
             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
             <textarea name="answersFromOption" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"></textarea>

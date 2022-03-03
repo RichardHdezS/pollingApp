@@ -22,7 +22,7 @@ function addOption(numSeccion){
 }
 
 function chooseTypeOption(typeOption, numOption){
-    if(typeOption=='range' || typeOption=='radioButton' || typeOption=='selectItems'){
+    if(typeOption=='radioButton' || typeOption=='selectItems'){
         document.querySelector(`.optionAnswer${numOption}`).innerHTML=""
         document.querySelector(`.optionAnswer${numOption}`).innerHTML=`
             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>

@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col col-9 Answers optionAnswer<%= indexOption %>">
                                                         <% let typeOption= form.body[indexSeccion].options[indexOption].typeOption; 
-                                                        if(typeOption=='range' || typeOption=='radioButton' || typeOption=='selectItems'){ %>
+                                                        if(typeOption=='radioButton' || typeOption=='selectItems'){ %>
                                                             <div class="form-text">Respuestas de esta opción.(Deben seprarse con ";" cada respuesta)</div>
                                                             <textarea name="answersFromOption" class="form-control inputAnswers" cols="20" rows="3" placeholder="respuesta 1; respuesta 2; respuesta 3"><%= form.body[indexSeccion].options[indexOption].answers %></textarea>
                                                         <% } else if(typeOption=='g-rango' || typeOption=='g-radios' || typeOption=='g-items'){ %>
